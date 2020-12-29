@@ -1,0 +1,117 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  background-color: rgb(66, 66, 66);
+  display: flex;
+}
+
+.gameContainer {
+  width: 620px;
+  height: 620px;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  perspective: 1000px;
+}
+.overlay {
+  align-items: center;
+  background: rgba(255, 255, 255, 0.75);
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  left: 0;
+  opacity: 1;
+  position: absolute;
+  height: 100vh;
+  top: 0;
+  transition: all 500ms ease-out;
+  z-index: 100;
+}
+.overlay.hidden {
+  opacity: 0;
+  pointer-events: none;
+  transition: all 300ms ease-out;
+}
+.overlay.hidden .gameover {
+  transform: translateY(60px);
+  transition: all 300ms ease-out;
+}
+.gameover {
+  align-items: center;
+  background-color: #fff;
+  border-radius: 120px;
+  border: 12px solid #50b8f7;
+  color: #2e2e2e;
+  display: flex;
+  font-family: 'Fredoka One', cursive;
+  font-size: 34px;
+  height: 130px;
+  width: 340px;
+  justify-content: space-between;
+  padding: 0 10px 0 30px;
+  transform: translateY(0);
+  transition: all 500ms ease-out;
+  user-select: none;
+}
+.reset {
+  background-color: #fbc300;
+  border-radius: 50%;
+  border: 0;
+  box-shadow: 0px 6px 0px 0px #f2a003;
+  cursor: pointer;
+  display: block;
+  height: 94px;
+  margin-left: 20px;
+  position: relative;
+  top: -3px;
+  width: 96px;
+}
+.reset:active {
+  box-shadow: none;
+  top: 0;
+}
+.reset:focus {
+  outline: 0;
+}
+
+
+.card {
+  width: 22.5%;
+  height: 22.5%;
+  margin: 5px;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.3s;
+  cursor: pointer;
+  background-color: transparent;
+}
+
+.card:active {
+  transform: scale(0.95);
+  transition: transform 0.2s ease-in-out;
+}
+
+.card.flip {
+  transform: rotateY(180deg);
+  cursor: pointer;
+}
+
+.front,
+.back {
+  background-color: #807f7f;
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+  border-radius: 4px;
+  position: absolute;
+  backface-visibility: hidden;
+}
+
+.front {
+  transform: rotateY(180deg);
+}
